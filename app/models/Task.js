@@ -9,7 +9,7 @@ const TaskSchema =  new Schema ({
     fecha_inicio : {type : Date, default : Date.now},
     fecha_fin : {type : Date},
     estado : Boolean,
-    panel : {type: mongoose.Types.ObjectId, ref:"Panel"},
+    task : {type: mongoose.Types.ObjectId, ref:"Task"},
 });
 
 const Task = mongoose.model('Task', TaskSchema);

@@ -4,7 +4,7 @@ export const weekResolver = (root, args) => {
   return Week.findById(args._id).exec()
 }
 
-export const allWeekResolver = async (root, args) => {
+export const allWeeksResolver = async (root, args) => {
   return Week.find().exec()
 }
 
