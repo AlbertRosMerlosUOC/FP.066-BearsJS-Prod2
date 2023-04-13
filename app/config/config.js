@@ -1,5 +1,5 @@
 export const typeDefs = `#graphql
-type Tarea {
+type Task {
   _id: String
   titulo: String 
   descripcion: String
@@ -9,27 +9,27 @@ type Tarea {
   Inday: String
   user: String
 }
-type Panel {
+type Week {
   _id: String
   titulo: String
   descripcion: String
   color: String
-  tareas: [Tarea]
+  tasks: [Task]
 }
 
 type Query {
   hello: String
 
-  panel(_id: ID): Panel
-  tarea(_id: ID): Tarea
+  week(_id: ID): Week
+  task(_id: ID): Task
 
-  allPaneles: [Panel]
-  allTareas: [Tarea]
+  allWeeks: [Week]
+  allTasks: [Task]
 }
 
 type Mutation {
-  addTarea(
-    idPanel: String,
+  addTask(
+    idWeek: String,
     titulo: String,
     descripcion: String,
     fecha_inicio: String,
@@ -37,12 +37,12 @@ type Mutation {
     week: String,
     Inday: String,
     user: String,
-  ): Tarea
-  addPanel(
+  ): Task
+  addWeek(
     titulo: String,
     descripcion: String,
     color: String,
-  ): Panel
+  ): Week
 }
 `;
 
