@@ -1,4 +1,4 @@
-const Week = require('../models/Week');
+/* const Week = require('./models/Week');
 
 exports.getWeeks = async (req, res) => {
   try {
@@ -21,10 +21,10 @@ exports.getWeekById = async (req, res) => {
 module.exports = {
   getAllWeeks,
   getWeekById,
-};
+}; */
 
 
-/* const Week = require('../models/Week');
+const Week = require('./models/Week');
 
 module.exports = {
   week: async ({ _id }) => {
@@ -33,4 +33,4 @@ module.exports = {
   allWeeks: async () => {
     return await Week.find().populate('tasks');
   }
-}; */
+};

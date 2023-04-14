@@ -1,9 +1,12 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
+const Week = require('./models/Week');
+//const Task = require('./models/Task');
 
 const app = express();
 
@@ -15,6 +18,7 @@ mongoose.connect('mongodb://localhost:27017/mydatabase', {
 
 // Middleware de GraphQL
 const schema = makeExecutableSchema({ typeDefs, resolvers });
+app.use(bodyParser.json());
 app.use(
   '/graphql',
   graphqlHTTP({

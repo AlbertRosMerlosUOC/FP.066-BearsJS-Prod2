@@ -24,7 +24,7 @@ module.exports = {
   getTaskById,
 }; */
 
-const Task = require('../models/Task');
+const Task = require('./models/Task');
 
 module.exports = {
   task: async ({ _id }) => {
