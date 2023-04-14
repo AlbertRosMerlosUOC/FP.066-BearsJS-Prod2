@@ -1,8 +1,15 @@
-import mongoose from "mongoose";
-import { mongoDbUrl } from "./config.mjs";
+const mongoose = require('mongoose');
 
-//Conexión con la base de datos
-mongoose
-  .connect(mongoDbUrl)
-  .then((db) => console.log("DB is connected"))
-  .catch((err) => console.log("DB error", err));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('MongoDB connected');
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = connectDB;

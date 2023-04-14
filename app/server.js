@@ -1,34 +1,29 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
-
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-const rootValue = {
-  hello: () => 'Hello World!'
-};
-
+const mongoose = require('mongoose');
+const { makeExecutableSchema } = require('@graphql-tools/schema');
+const typeDefs = require('./schema');
+const resolvers = require('./resolvers');
 
 const app = express();
-app.get('/', (req, res) => {
-  res.send('Hola, mundo!');
+
+// Configuración de la base de datos con Mongoose
+mongoose.connect('mongodb://localhost:27017/mydatabase', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
+// Middleware de GraphQL
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema: schema,
+    graphiql: true
+  })
+);
 
-
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: rootValue,
-  graphiql: true
-}));
-
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+// Inicio del servidor
+app.listen(4000, () => {
+  console.log('Servidor GraphQL escuchando en el puerto 4000...');
 });
-
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/BearsJS-Prod2', { useNewUrlParser: true, useUnifiedTopology: true });

@@ -1,11 +1,12 @@
-const mongoose = require('mongoose'); // Llamada a mongoose
-const Schema = mongoose.Schema ;   //Creación del Schema
+const mongoose = require('mongoose');
 
-const WeeksSchema = new Schema ({
-    titulo : String,
-    descripcion : String,
-})
+const weekSchema = new mongoose.Schema({
+  year: { type: String, required: true },
+  desc: { type: String },
+  hourIni: { type: String },
+  hourEnd: { type: String },
+  color: { type: String },
+  tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }]
+});
 
-const Week = mongoose.model('Week', WeeksSchema);
-
-module.exports = Week;
+module.exports = mongoose.model('Week', weekSchema);

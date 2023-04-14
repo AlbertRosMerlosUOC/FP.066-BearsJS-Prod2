@@ -1,14 +1,36 @@
-/* import Week from './../models/Week.js';
+const Week = require('../models/Week');
 
-export const weekResolver = (root, args) => {
-  return Week.findById(args._id).exec()
-}
+exports.getWeeks = async (req, res) => {
+  try {
+    const weeks = await Week.find();
+    res.status(200).json(weeks);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 
-export const allWeeksResolver = async (root, args) => {
-  return Week.find().exec()
-}
+exports.getWeekById = async (req, res) => {
+  try {
+    const week = await Week.findById(req.params.id);
+    if (!week) throw new Error('Week not found');
+    res.status(200).json(week);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+module.exports = {
+  getAllWeeks,
+  getWeekById,
+};
 
-export const addWeekResolver = (root, args) => {
-  const week = new Week({...args})
-  return week.save()
-} */
+
+/* const Week = require('../models/Week');
+
+module.exports = {
+  week: async ({ _id }) => {
+    return await Week.findById(_id).populate('tasks');
+  },
+  allWeeks: async () => {
+    return await Week.find().populate('tasks');
+  }
+}; */

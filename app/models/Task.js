@@ -1,17 +1,14 @@
-//Tasks
+const mongoose = require('mongoose');
 
-const mongoose = require('mongoose'); //Llamada a mongoose
-const Schema = mongoose.Schema;      //Creación del Schema
-
-const TaskSchema =  new Schema ({
-    titulo : String,
-    descripcion : String,
-    fecha_inicio : {type : Date, default : Date.now},
-    fecha_fin : {type : Date},
-    estado : Boolean,
-    task : {type: mongoose.Types.ObjectId, ref:"Task"},
+const taskSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  desc: { type: String, required: true },
+  hIni: { type: String },
+  hEnd: { type: String },
+  user: { type: String },
+  agreeInDay: { type: String },
+  fini: { type: String },
+  week: { type: mongoose.Schema.Types.ObjectId, ref: 'Week' }
 });
 
-const Task = mongoose.model('Task', TaskSchema);
-
-module.exports = Task;
+module.exports = mongoose.model('Task', taskSchema);
