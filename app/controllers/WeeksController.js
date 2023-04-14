@@ -1,4 +1,4 @@
-import Week from './../models/Week.js';
+/* import Week from './../models/Week.js';
 
 export const weekResolver = (root, args) => {
   return Week.findById(args._id).exec()
@@ -11,4 +11,4 @@ export const allWeeksResolver = async (root, args) => {
 export const addWeekResolver = (root, args) => {
   const week = new Week({...args})
   return week.save()
-}
+} */
