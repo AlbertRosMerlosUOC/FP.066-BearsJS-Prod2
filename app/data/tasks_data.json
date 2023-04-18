@@ -1,0 +1,12 @@
+
+[
+    {
+        "id": "1", "titulo": "Título 1", "descripcion": "Texto 1", "color": "red"
+    },
+    {
+        "id": "2", "titulo": "Título 2", "descripcion": "Texto 2", "color": "blue"
+    },
+    {
+        "id": "3", "titulo": "Título 3", "descripcion": "Texto 3", "color": "green"
+    }
+]

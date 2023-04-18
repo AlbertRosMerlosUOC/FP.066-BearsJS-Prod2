@@ -1,15 +1,24 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const Tasks = require("../models/modelTask");
+const env = require("dotenv");
 
-const connectDB = async () => {
+const mongoDbUrl =
+  "mongodb+srv://BearsJS:BearsJS@product2.v5kejnx.mongodb.net/test";
+
+env.config();
+//DB Conection
+mongoose.connect(mongoDbUrl);
+// Get the default connection
+
+const db = mongoose.connection;
+const getTasks = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('MongoDB connected');
-  } catch (error) {
-    console.log(error);
+    const tasksmongo = await Tasks.find({});
+    return tasksmongo;
+  } catch (err) {
+    console.log(err);
+    return err;
   }
 };
 
-module.exports = connectDB;
+module.exports = { getTasks };

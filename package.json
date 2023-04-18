@@ -1,27 +1,15 @@
 {
-  "name": "fp.066-bearsjs-prod1-master",
-  "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "start" : "node app/server.js" 
+    "dev": "nodemon app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MarcusCrocus/JavaScriptBackEnd.git"
-  },
-  "keywords": [],
-  "author": "",
+  "author": "dev",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MarcusCrocus/JavaScriptBackEnd/issues"
-  },
-  "homepage": "https://github.com/MarcusCrocus/JavaScriptBackEnd#readme",
-  "description": "",
   "dependencies": {
     "apollo-server": "^3.12.0",
-    "express": "^4.18.2",
-    "express-graphql": "^0.12.0",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.4",
+    "nodemon": "^2.0.22"
   }
 }

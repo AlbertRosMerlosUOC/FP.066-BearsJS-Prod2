@@ -11,12 +11,17 @@ form.addEventListener("submit", (event) => {
   const week = document.querySelector("#weekInput").value;
   const year = document.querySelector("#yearInput").value;
   const desc = document.querySelector("#descInput").value;
-  const type = document.querySelector('input[name="workType"]:checked + label').textContent;
+  const type = document.querySelector(
+    'input[name="workType"]:checked + label'
+  ).textContent;
   const hourIni = document.querySelector("#iniInput").value;
   const hourEnd = document.querySelector("#endInput").value;
   const color = document.querySelector("#colorInput").value;
+  const schedule =
+    hourIni != "" && hourEnd != ""
+      ? "de " + hourIni + " a " + hourEnd + "h"
+      : "No especificadas horas de inicio y de fin";
 
-  const schedule = (hourIni != "" && hourEnd != "") ? "de " + hourIni + " a " + hourEnd + "h": "No especificadas horas de inicio y de fin";
   // Crear un nuevo elemento HTML para la tarjeta
   const card = document.createElement("div");
   card.classList.add("card");
