@@ -8,5 +8,8 @@
     },
     {
         "id": "3", "titulo": "Título 3", "descripcion": "Texto 3", "color": "green"
+    },
+    {
+        "id": "4", "titulo": "Título 4", "descripcion": "Texto 4", "color": "yellow", "fecha_inicio": "2018-01-01", "fecha_fin": "2018-01-31"
     }
 ]
