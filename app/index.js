@@ -2,30 +2,10 @@ const { ApolloServer, gql } = require("apollo-server");
 const tasksdata = require("./data/tasks_data.json");
 //const { env } = require("dotenv");
 const { getTasks } = require("./config/database");
+const { config } = require("./config/config");
 
 //schema
-const typeDefs = gql`
-  type Task {
-    _id: String
-    titulo: String
-    descripcion: String
-    color: String
-  }
-  type Week {
-    _id: String
-    titulo: String
-    descripcion: String
-    fecha_inicio: String
-    fecha_fin: String
-    week: String
-    Inday: String
-    user: String
-  }
-  type Query {
-    tasks: [Task]
-    weeks: [Week]
-  }
-`;
+const typeDefs = config;
 
 const resolvers = {
   Query: {
