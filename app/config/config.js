@@ -1,24 +1,36 @@
-const { gql } = require("apollo-server");
-const config = gql`
+const { gql } = require('apollo-server');
+
+const typeDefs = gql`
   type Week {
-    _id: String
-    titulo: String
-    descripcion: String
+    id: Int
+    week: Int!
+    year: Int!
+    description: String
+    type: String!
+    hour_ini: String
+    hour_end: String
     color: String
   }
+
   type Task {
-    _id: String
-    titulo: String
-    descripcion: String
-    fecha_inicio: String
-    fecha_fin: String
-    week: String
-    Inday: String
+    id: Int
+    id_week: Week!
+    name: String!
+    description: String!
+    hour_ini: String
+    hour_end: String
+    type: String!
     user: String
+    in_day: String
+    finished: Boolean!
   }
+
   type Query {
-    tasks: [Task]
     weeks: [Week]
+    week(id: Int!): Week
+    tasks: [Task]
+    task(id: Int!): Task
   }
 `;
-module.exports = { config };
+
+module.exports = typeDefs;

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Schema = new mongoose.Schema({
+const weekSchema = new mongoose.Schema({
   id: Number,
   week: { type: Number, required: true },
   year: { type: Number, required: true },
@@ -11,6 +11,6 @@ const Schema = new mongoose.Schema({
   color: String,
 });
 
-const Weeks = mongoose.model("Weeks", Schema);
+const Weeks = mongoose.model("Weeks", weekSchema);
 
 module.exports = Weeks;

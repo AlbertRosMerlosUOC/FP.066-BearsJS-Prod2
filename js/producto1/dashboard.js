@@ -41,7 +41,7 @@ form.addEventListener("submit", (event) => {
   const hEnd = document.querySelector("#endInput").value;
   const tTyp = document.querySelector('input[name="taskType"]:checked').value;
   const user = document.querySelector("#userInput").value;
-  const agreeInDay = document.querySelector("#agreeInDay").value;
+  const inDay = document.querySelector("#inDay").value;
   const fini = document.querySelector("#finishedInput").checked ? "1" : "0";
 
   // Crear un nuevo elemento HTML para la tarjeta
@@ -55,7 +55,7 @@ form.addEventListener("submit", (event) => {
     <input type="hidden" class="fHEnd" value="${hEnd}"/>
     <input type="hidden" class="fTTyp" value="${tTyp}"/>
     <input type="hidden" class="fUser" value="${user}"/>
-    <input type="hidden" class="fDays" value="${agreeInDay}"/>
+    <input type="hidden" class="fDays" value="${inDay}"/>
     <input type="hidden" class="fFini" value="${fini}"/>
     <div class="buttonsDiv">
       <button type="button" class="btn btn-success xx-small button-editTask" data-bs-toggle="modal" data-bs-target="#formTask"><i class="fa fa-edit fa-lg"></i></button>
@@ -87,7 +87,7 @@ form.addEventListener("submit", (event) => {
     ).checked = "true";
     document.querySelector("#userInput").value =
       editCard.querySelector(".fUser").value;
-    document.querySelector("#agreeInDay").value =
+    document.querySelector("#inDay").value =
       editCard.querySelector(".fDays").value;
     document.querySelector("#finishedInput").checked =
       editCard.querySelector(".fFini").value == "1" ? "checked" : "";
@@ -143,19 +143,19 @@ form.addEventListener("submit", (event) => {
   // Agregar la tarjeta al contenedor que toque según el día clickado
   var tC = document.getElementById("target-card").value;
 
-  if (tC == "1" || agreeInDay == "L") {
+  if (tC == "1" || inDay == "L") {
     dropDay1.appendChild(card);
-  } else if (tC == "2" || agreeInDay == "M") {
+  } else if (tC == "2" || inDay == "M") {
     dropDay2.appendChild(card);
-  } else if (tC == "3" || agreeInDay == "X") {
+  } else if (tC == "3" || inDay == "X") {
     dropDay3.appendChild(card);
-  } else if (tC == "4" || agreeInDay == "J") {
+  } else if (tC == "4" || inDay == "J") {
     dropDay4.appendChild(card);
-  } else if (tC == "5" || agreeInDay == "V") {
+  } else if (tC == "5" || inDay == "V") {
     dropDay5.appendChild(card);
-  } else if (tC == "6" || agreeInDay == "S") {
+  } else if (tC == "6" || inDay == "S") {
     dropDay6.appendChild(card);
-  } else if (tC == "7" || agreeInDay == "D") {
+  } else if (tC == "7" || inDay == "D") {
     dropDay7.appendChild(card);
   } else {
     dropUnassigned.appendChild(card);
@@ -242,7 +242,7 @@ saveTask.addEventListener("click", () => {
   const hEnd = document.querySelector("#endInput").value;
   const tTyp = document.querySelector('input[name="taskType"]:checked').value;
   const user = document.querySelector("#userInput").value;
-  const days = document.querySelector("#agreeInDay").value;
+  const days = document.querySelector("#inDay").value;
   const fini = document.querySelector("#finishedInput").checked ? "1" : "0";
   editingTask.innerHTML = `
     <p class="fName"><b>${name}</b></p>
@@ -282,7 +282,7 @@ saveTask.addEventListener("click", () => {
     ).checked = "true";
     document.querySelector("#userInput").value =
       editCard.querySelector(".fUser").value;
-    document.querySelector("#agreeInDay").value =
+    document.querySelector("#inDay").value =
       editCard.querySelector(".fDays").value;
     document.querySelector("#finishedInput").checked =
       editCard.querySelector(".fFini").value == "1" ? "checked" : "";

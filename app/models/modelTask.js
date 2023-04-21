@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-const Schema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema({
   id: Number,
+  id_week: { type: mongoose.Schema.Types.ObjectId, ref: 'Weeks' },
   name: { type: String, required: true },
   description: { type: String, required: true },
   hour_ini: String,
@@ -12,6 +13,6 @@ const Schema = new mongoose.Schema({
   finished: { type: Boolean, required: true },
 });
 
-const Tasks = mongoose.model("Tasks", Schema);
+const Tasks = mongoose.model("Tasks", taskSchema);
 
 module.exports = Tasks;
