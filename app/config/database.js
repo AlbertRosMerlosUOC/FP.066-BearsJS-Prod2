@@ -1,25 +1,18 @@
 const mongoose = require("mongoose");
-const Tasks = require("../models/modelTask");
-const Weeks = require("../models/modelWeek");
 const env = require("dotenv");
 
-const mongoDbUrl =
-  "mongodb+srv://BearsJS:BearsJS@product2.v5kejnx.mongodb.net/test";
+const MONGO_USERNAME = 'BearsJS';
+const MONGO_PASSWORD = 'BearsJS';
+const MONGO_CLUSTER_NAME = 'product2.v5kejnx';
+const MONGO_DB_NAME = 'test';
+
+const mongoDbUrl = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_CLUSTER_NAME}.mongodb.net/${MONGO_DB_NAME}?retryWrites=true&w=majority`;
 
 env.config();
-//DB Conection
-mongoose.connect(mongoDbUrl);
-// Get the default connection
+mongoose.connect(mongoDbUrl)
+        .then(() => console.log('Connected to MongoDB'))
+        .catch((err) => console.log(err));
 
-const db = mongoose.connection;
-const getTasks = async () => {
-  try {
-    const tasksmongo = await Tasks.find({});
-    return tasksmongo;
-  } catch (err) {
-    console.log(err);
-    return err;
-  }
-};
+const database = mongoose.connection;
 
-module.exports = { getTasks };
+module.exports = database;

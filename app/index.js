@@ -1,22 +1,8 @@
 const { ApolloServer, gql } = require("apollo-server");
-const tasksdata = require("./data/tasks_data.json");
-//const { env } = require("dotenv");
-const { getTasks } = require("./config/database");
-const { config } = require("./config/config");
+const { database } = require("./config/database");
 
-//schema
-const typeDefs = config;
-
-const resolvers = {
-  Query: {
-    tasks: () => {
-      return getTasks();
-    },
-    weeks: () => {
-      return getTasks();
-    },
-  },
-};
+const typeDefs = require("./graphql/typeDefs");
+const resolvers = require("./resolvers/resolvers");
 
 //Launch the server
 const server = new ApolloServer({ typeDefs, resolvers });
