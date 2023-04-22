@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const weekSchema = new mongoose.Schema({
-  id: Number,
+  id_week: { type: String, required: true, unique: true, },
   week: { type: Number, required: true },
   year: { type: Number, required: true },
   description: String,

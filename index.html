@@ -28,8 +28,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="html/producto1/producto1.html">Producto 1</a></li>
-                  <li><a class="dropdown-item disabled" href="#">Producto 2</a></li>
+                  <li><a class="dropdown-item disabled" href="#">Producto 1</a></li>
+                  <li><a class="dropdown-item" href="html/producto2/producto2.html">Producto 2</a></li>
                   <li><a class="dropdown-item disabled" href="#">Producto 3</a></li>
                   <li><a class="dropdown-item disabled" href="#">Producto 4</a></li>
                 </ul>
@@ -48,11 +48,11 @@
         <!-- Producto 1 -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="h-product-1">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c-product-1" aria-expanded="true" aria-controls="c-product-1" style="font-size: 20px !important;">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-product-1" aria-expanded="true" aria-controls="c-product-1" style="font-size: 20px !important;">
               Producto 1
             </button>
           </h2>
-          <div id="c-product-1" class="accordion-collapse collapse show" aria-labelledby="h-product-1" data-bs-parent="#accordionProducts">
+          <div id="c-product-1" class="accordion-collapse collapse" aria-labelledby="h-product-1" data-bs-parent="#accordionProducts">
             <div class="accordion-body" style="text-align: justify;">
               <h5>Creando la parte visible de nuestra aplicación. FrontEnd</h5>
               <p class="card-text">En este producto hemos creado un <b>PROYECTO PROPIO</b> y en <b>EQUIPO</b> que ha seguido las indicaciones de un proyecto tipo 
@@ -62,22 +62,23 @@
               <p class="card-text">En este producto hemos dejado listas las opciones básicas de nuestro frontal, en el caso del proyecto: semanas del mes, días de esa semana, 
                   creación de tareas a hacer y la posibilidad de mover tareas entre los días de la semana, para ello necesitamos que nuestra aplicación sea sencilla y fácil de 
                   usar por parte de los usuarios, y para ello las herramientas de frontal nos ayudarán a ese desarrollo.</p>
-            <a href="./html/producto1/producto1.html" class="btn btn-primary">Producto 1</a>
             </div>
           </div>
         </div>
         <!-- Producto 2 -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="h-product-2">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-product-2" aria-expanded="true" aria-controls="c-product-2" style="font-size: 20px !important;">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c-product-2" aria-expanded="true" aria-controls="c-product-2" style="font-size: 20px !important;">
               Producto 2
             </button>
           </h2>
-          <div id="c-product-2" class="accordion-collapse collapse" aria-labelledby="h-product-2" data-bs-parent="#accordionProducts">
-            <div class="accordion-body">
+          <div id="c-product-2" class="accordion-collapse collapse show" aria-labelledby="h-product-2" data-bs-parent="#accordionProducts">
+            <div class="accordion-body" style="text-align: justify;">
               <h5>Sirviendo datos con GraphQL y MongoDB</h5>
-              <p class="card-text">En desarrollo.</p>
-            <a href="#" class="btn btn-secondary">Producto 2</a>
+              <p class="card-text">En este producto hemos implementado un servidor con <b>Node/Express</b> en el que serviremos la información a partir del gestor de bases de datos 
+                <b>MongoDB</b> y utilizando la especificación <b>GraphQL</b> para proveer de los argumentos para realizar las <i>Queries</i> y los <i>Mutations</i> para interactuar 
+                con el frontal en el siguiente producto.</p>
+              <a href="./html/producto2/producto2.html" class="btn btn-primary">Producto 2</a>
             </div>
           </div>
         </div>
@@ -92,7 +93,6 @@
             <div class="accordion-body">
               <h5>Añadiendo, modificando y borrando información</h5>
               <p class="card-text">En desarrollo.</p>
-            <a href="#" class="btn btn-secondary">Producto 3</a>
             </div>
           </div>
         </div>
@@ -107,7 +107,6 @@
             <div class="accordion-body">
               <h5>Trabajando en tiempo real de forma colaborativa</h5>
               <p class="card-text">En desarrollo.</p>
-            <a href="#" class="btn btn-secondary">Producto 4</a>
             </div>
           </div>
         </div>
