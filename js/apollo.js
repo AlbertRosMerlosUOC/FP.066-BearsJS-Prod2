@@ -1,3 +1,4 @@
+// ARM Archivo de testeo
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 
@@ -25,8 +26,8 @@ async function startApolloServer() {
   server.applyMiddleware({ app });
 
   // Iniciamos el servidor
-  app.listen(4000, () => {
-    console.log(`🚀 Servidor iniciado en http://localhost:4000${server.graphqlPath}`);
+  app.listen(5000, () => {
+    console.log(`🚀 Servidor iniciado en http://localhost:5000${server.graphqlPath}`);
   });
 }
 

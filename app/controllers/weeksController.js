@@ -1,5 +1,4 @@
 const Week = require('../models/Week');
-const mongoose = require("mongoose");
 
 const getWeeks = async () => {
   return await Week.find();

@@ -1,4 +1,3 @@
-const Week = require('../models/Week');
 const Task = require('../models/Task');
 
 const getTasks = async () => {
