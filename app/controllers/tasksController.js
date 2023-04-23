@@ -6,7 +6,7 @@ const getTasks = async () => {
 };
 
 const getTaskById = (root, args) => {
-  return Task.findById(args._id).exec()
+  return Task.findById(args._id).populate('_id_week').exec();
 }
 
 const getTasksByWeek = async (_, { idWeek }) => {

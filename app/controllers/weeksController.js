@@ -6,7 +6,7 @@ const getWeeks = async () => {
 };
 
 const getWeekById = (root, args) => {
-  return Week.findById(args._id).exec()
+  return Week.findById(args._id).exec();
 }
 
 module.exports = {
