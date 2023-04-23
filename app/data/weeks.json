@@ -1,6 +1,6 @@
 [
-	{"id_week":"01-2023","week":{"$numberInt":"1"},"year":{"$numberInt":"2023"},"description":"Semana 1","type":"T","hour_ini":"10:00","hour_end":"14:30","color":"green"},
-	{"id_week":"02-2023","week":{"$numberInt":"2"},"year":{"$numberInt":"2023"},"description":"Semana 2","type":"P","hour_ini":"14:00","hour_end":"16:30","color":"purple"},
-	{"id_week":"03-2023","week":{"$numberInt":"3"},"year":{"$numberInt":"2023"},"description":"Semana 3","type":"T","hour_ini":"09:00","hour_end":"17:00","color":"blue"},
-	{"id_week":"04-2023","week":{"$numberInt":"4"},"year":{"$numberInt":"2023"},"description":"Semana 4","type":"P","hour_ini":"09:00","hour_end":"17:00","color":"orange"}
+	{"_id":{"$oid":"64439f84030272c28184e037"},"week":{"$numberInt":"1"},"year":{"$numberInt":"2023"},"description":"Semana 1","type":"T","hour_ini":"10:00","hour_end":"14:30","color":"green"},
+	{"_id":{"$oid":"64439f84030272c28184e038"},"week":{"$numberInt":"2"},"year":{"$numberInt":"2023"},"description":"Semana 2","type":"P","hour_ini":"14:00","hour_end":"16:30","color":"purple"},
+	{"_id":{"$oid":"64439f84030272c28184e039"},"week":{"$numberInt":"3"},"year":{"$numberInt":"2023"},"description":"Semana 3","type":"T","hour_ini":"09:00","hour_end":"17:00","color":"blue"},
+	{"_id":{"$oid":"64439f84030272c28184e03a"},"week":{"$numberInt":"4"},"year":{"$numberInt":"2023"},"description":"Semana 4","type":"P","hour_ini":"09:00","hour_end":"17:00","color":"orange"}
 ]

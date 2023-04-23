@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   type Week {
-    id_week: ID!
+    _id: ID!
     week: Int!
     year: Int!
     description: String
@@ -13,8 +13,8 @@ const typeDefs = gql`
   }
 
   type Task {
-    id_task: ID!
-    id_week: ID!
+    _id: ID!
+    _id_week: Week!
     name: String!
     description: String!
     hour_ini: String
@@ -26,12 +26,11 @@ const typeDefs = gql`
   }
 
   type Query {
-    getWeekById(id_week: ID!): Week!
+    getWeekById(_id: ID!): Week
     getWeeks: [Week]
-    getTaskById(id_task: ID!): Task!
+    getTaskById(_id: ID!): Task
     getTasks: [Task]
-    getTasksByWeek(id_week: ID!): [Task!]!
-    getTasksByW(id_week: ID!): [Task]
+    getTasksByWeek(idWeek: String!): [Task!]!
   }
 `;
 
