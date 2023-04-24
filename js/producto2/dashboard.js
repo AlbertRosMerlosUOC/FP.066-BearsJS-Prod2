@@ -336,3 +336,178 @@ modal.addEventListener("hidden.bs.modal", function (event) {
   // Mostramos el campo de añadir al día
   document.querySelector(".div-add-into").style.display = "block";
 });
+
+// Recuperación del parámetro "_id" (identificador de semana) pasado por URL
+const idWeek = new URLSearchParams(window.location.search).get("_id");
+
+function writeCard(item) {
+  // Crear un nuevo elemento HTML para la tarjeta
+  const card = document.createElement("div");
+  var finished = item.finished ? "1" : "0";
+  card.classList.add("card");
+  card.classList.add("cardTask");
+  card.innerHTML = `
+    <p class="fName"><b>${item.name}</b></p>
+    <p class="fDesc">${item.description}</p>
+    <input type="hidden" class="fHIni" value="${item.hour_ini}"/>
+    <input type="hidden" class="fHEnd" value="${item.hour_end}"/>
+    <input type="hidden" class="fTTyp" value="${item.type}"/>
+    <input type="hidden" class="fUser" value="${item.user}"/>
+    <input type="hidden" class="fDays" value="${item.in_day}"/>
+    <input type="hidden" class="fFini" value="${finished}"/>
+    <div class="buttonsDiv">
+      <button type="button" class="btn btn-success xx-small button-editTask" data-bs-toggle="modal" data-bs-target="#formTask"><i class="fa fa-edit fa-lg"></i></button>
+      <button type="button" class="btn btn-danger xx-small button-deleteTask" data-bs-toggle="modal" data-bs-target="#myModalDelete"><i class="fa fa-trash-o fa-lg"></i></button>
+    </div>
+  `;
+
+  // Obtener el primer botón dentro del elemento "card"
+  const editTask = card.querySelector(".button-editTask");
+
+  // Agregar un controlador de eventos "click" al segundo botón
+  editTask.addEventListener("click", () => {
+    // Reiniciamos el formulario
+    form.reset();
+    // Añadimos la información de la tarea al formulario
+    const editCard = editTask.parentElement.parentElement;
+    document.querySelector("#nameInput").value =
+      editCard.querySelector(".fName").textContent;
+    document.querySelector("#descInput").value =
+      editCard.querySelector(".fDesc").textContent;
+    document.querySelector("#iniInput").value =
+      editCard.querySelector(".fHIni").value;
+    document.querySelector("#endInput").value =
+      editCard.querySelector(".fHEnd").value;
+    document.querySelector(
+      'input[name="taskType"][value="' +
+        editCard.querySelector(".fTTyp").value +
+        '"]'
+    ).checked = "true";
+    document.querySelector("#userInput").value =
+      editCard.querySelector(".fUser").value;
+    document.querySelector("#inDay").value =
+      editCard.querySelector(".fDays").value;
+    document.querySelector("#finishedInput").checked =
+      editCard.querySelector(".fFini").value == "1" ? "checked" : "";
+    // Añadimos una clase a la tarjeta que estamos editando para poder actualizarla después
+    editCard.classList.add("editing");
+    // Ocultamos el botón de crear tarea
+    document.getElementById("modal-add-create").style.display = "none";
+    // Mostramos el botón de guardar cambios (para editar la tarea)
+    document.getElementById("modal-add-save").style.display = "block";
+    // Ocultamos el campo de añadir al día en la edición de la tarjeta
+    document.querySelector(".div-add-into").style.display = "none";
+  });
+
+  // Obtener el segundo botón dentro del elemento "card"
+  const deleteTask = card.querySelector(".button-deleteTask");
+
+  // Agregar un controlador de eventos "click" al segundo botón
+  deleteTask.addEventListener("click", () => {
+    // Obtener el elemento "div" que contiene el botón y eliminarlo
+    const dropUnassigned = deleteTask.parentElement.parentElement;
+
+    const modalDelete = document.querySelector("#myModalDelete");
+    const modalInstance = bootstrap.Modal.getInstance(modalDelete);
+    modalInstance.show();
+
+    // Funcionalidad de quitar tarjeta (elimina tarjeta)
+    const deleteCard = document.querySelector("#deleteCard");
+    deleteCard.addEventListener("click", () => {
+      modalInstance.hide();
+      if (card.parentNode) {
+        dropUnassigned.remove();
+      }
+    });
+  });
+
+  // Agregar atributo "draggable" al elemento "card"
+  card.setAttribute("draggable", true);
+
+  // Agregar controladores de eventos para eventos de arrastrar y soltar
+  card.addEventListener("dragstart", dragStart);
+  card.addEventListener("dragend", dragEnd);
+
+  function dragStart() {
+    // Establecer el efecto de arrastrar
+    this.classList.add("dragging");
+  }
+
+  function dragEnd() {
+    // Restablecer el efecto de arrastrar
+    this.classList.remove("dragging");
+  }
+
+  // Agregar la tarjeta al contenedor que toque según el día clickado
+  var tC = item.in_day;
+
+  if (tC == "1" || inDay == "L") {
+    dropDay1.appendChild(card);
+  } else if (tC == "2" || inDay == "M") {
+    dropDay2.appendChild(card);
+  } else if (tC == "3" || inDay == "X") {
+    dropDay3.appendChild(card);
+  } else if (tC == "4" || inDay == "J") {
+    dropDay4.appendChild(card);
+  } else if (tC == "5" || inDay == "V") {
+    dropDay5.appendChild(card);
+  } else if (tC == "6" || inDay == "S") {
+    dropDay6.appendChild(card);
+  } else if (tC == "7" || inDay == "D") {
+    dropDay7.appendChild(card);
+  } else {
+    dropUnassigned.appendChild(card);
+  }
+};
+
+// Carga de datos inicial con conexión a MongoDB. 
+// Conexion al servidor GraphQl para la llamada getTasksByWeek(idWeek)
+// Se ejecutará siempre y cuando la semana no provenga del mockup (es decir, cuando venga de base de datos)
+if (!idWeek.includes("mockup-")) {
+  fetch("http://localhost:5000", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `{
+        getTasksByWeek(_id_week: "${idWeek}") {
+          _id
+          name
+          description
+          hour_ini
+          hour_end
+          type
+          user
+          in_day
+          finished
+        }
+      }`,
+    }),
+  }).then((res) => res.json())
+    .then((res) => {
+      res.data.getTasksByWeek.map((item) => writeCard(item));
+    });
+  
+  fetch("http://localhost:5000", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `{
+        getWeekById(_id: "${idWeek}") {
+          _id
+          week
+          year
+        }
+      }`,
+    }),
+  }).then((res) => res.json())
+    .then((res) => {
+      document.querySelector("#breadcrumb-current").innerHTML = "Semana " + res.data.getWeekById.week + " del año " + res.data.getWeekById.year;
+    });
+} else {
+  var text = idWeek.replace("mockup-", "").replace("-", " del año ");
+  document.querySelector("#breadcrumb-current").innerHTML = "Semana " + text;
+}

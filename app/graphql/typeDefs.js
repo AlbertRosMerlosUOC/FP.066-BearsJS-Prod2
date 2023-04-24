@@ -30,7 +30,7 @@ const typeDefs = gql`
     getWeeks: [Week]
     getTaskById(_id: ID!): Task
     getTasks: [Task]
-    getTasksByWeek(idWeek: String!): [Task!]!
+    getTasksByWeek(_id_week: String!): [Task!]!
   }
 `;
 

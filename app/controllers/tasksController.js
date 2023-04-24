@@ -8,8 +8,8 @@ const getTaskById = (root, args) => {
   return Task.findById(args._id).populate('_id_week').exec();
 }
 
-const getTasksByWeek = async (_, { idWeek }) => {
-  const tasks = await Task.find({ _id_week: idWeek }).populate('_id_week');
+const getTasksByWeek = async (_, { _id_week }) => {
+  const tasks = await Task.find({ _id_week: _id_week }).populate('_id_week');
   return tasks;
 };
 
