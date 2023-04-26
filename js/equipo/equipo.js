@@ -6,6 +6,8 @@ const botonCopiarGSites = document.querySelector("#copy-gsites");
 const textoACopiarGSites = document.querySelector("#text-gsites");
 const botonCopiarSandboxP1 = document.querySelector("#copy-sandbox-p1");
 const textoACopiarSandboxP1 = document.querySelector("#text-sandbox-p1");
+const botonCopiarSandboxP2 = document.querySelector("#copy-sandbox-p2");
+const textoACopiarSandboxP2 = document.querySelector("#text-sandbox-p2");
 
 botonCopiarGitP1.addEventListener("click", () => {
   const seleccion = document.getSelection();
@@ -42,6 +44,22 @@ botonCopiarGitP2.addEventListener("click", () => {
 botonCopiarSandboxP1.addEventListener("click", () => {
   const seleccion = document.getSelection();
   const contenido = textoACopiarSandboxP1.innerText;
+
+  const textareaTemporal = document.createElement("textarea");
+  textareaTemporal.value = contenido;
+  document.body.appendChild(textareaTemporal);
+
+  textareaTemporal.select();
+  textareaTemporal.setSelectionRange(0, 99999);
+
+  document.execCommand("copy");
+
+  document.body.removeChild(textareaTemporal);
+});
+
+botonCopiarSandboxP2.addEventListener("click", () => {
+  const seleccion = document.getSelection();
+  const contenido = textoACopiarSandboxP2.innerText;
 
   const textareaTemporal = document.createElement("textarea");
   textareaTemporal.value = contenido;
