@@ -36,4 +36,8 @@
     border-radius: 6px;
     margin-left: 25px; 
 }
+
+.text-copy > button {
+    height: 32px !important;
+}
   

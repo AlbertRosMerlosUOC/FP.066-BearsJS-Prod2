@@ -1,25 +1,16 @@
 {
-  "name": "producto-2",
-  "version": "1.0.0",
-  "description": "FP.066 - Producto 2",
-  "main": "index.js",
   "scripts": {
+    "dev": "nodemon app/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AlbertRosMerlosUOC/FP.066-BearsJS-Prod2.git"
-  },
-  "author": "BearsJS",
+  "author": "dev",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AlbertRosMerlosUOC/FP.066-BearsJS-Prod2/issues"
-  },
-  "homepage": "https://github.com/AlbertRosMerlosUOC/FP.066-BearsJS-Prod2#readme",
   "dependencies": {
-    "express": "^4.18.2",
-    "express-graphql": "^0.12.0",
+    "apollo-server": "^3.12.0",
+    "apollo-server-express": "^3.12.0",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.4",
+    "nodemon": "^2.0.22"
   }
 }
